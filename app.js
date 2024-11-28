@@ -9,6 +9,7 @@ var osRoutes = require('./routes/os');
 var productsRoutes = require('./routes/products'); 
 const mongo=require("mongoose");
 const mongoConnection= require("./Config/mongodb.json");
+
 var app = express();
 
 // view engine setup
@@ -22,10 +23,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/api/users', usersRouter);
 app.use('/os', osRoutes);
 app.use('/products', productsRoutes);
-
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
